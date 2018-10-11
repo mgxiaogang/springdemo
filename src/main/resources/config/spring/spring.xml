@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+       http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+	   http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+    <aop:aspectj-autoproxy/>
+
+    <!-- spring mvc配置及tsp相关配置 -->
+    <context:component-scan base-package="com.xiaogang"/>
+    <mvc:default-servlet-handler/>
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/views/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+    <!--<bean id="marshallingHttpMessageConverter" class="org.springframework.http.converter.xml.MarshallingHttpMessageConverter">-->
+    <!--<property name="marshaller" ref="xstreamMarshaller" />-->
+    <!--<property name="unmarshaller" ref="xstreamMarshaller" />-->
+    <!--<property name="supportedMediaTypes">-->
+    <!--<list>-->
+    <!--<value>application/xml;charset=UTF-8</value>-->
+    <!--</list>-->
+    <!--</property>-->
+    <!--</bean>-->
+    <!--<bean id="xstreamMarshaller" class="org.springframework.oxm.xstream.XStreamMarshaller" />-->
+
+
+    <bean id="jsonMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"></bean>
+    <mvc:annotation-driven>
+        <mvc:message-converters>
+            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"></bean>
+            <bean class="org.springframework.http.converter.ByteArrayHttpMessageConverter"></bean>
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter"></bean>
+            <bean class="org.springframework.http.converter.ResourceHttpMessageConverter"></bean>
+            <bean class="org.springframework.http.converter.xml.SourceHttpMessageConverter"></bean>
+            <bean class="org.springframework.http.converter.FormHttpMessageConverter"></bean>
+            <!--<ref bean="marshallingHttpMessageConverter" />-->
+        </mvc:message-converters>
+        <mvc:return-value-handlers>
+            <bean class="com.xiaogang.framework.basic.annotations.JsonResponseValidationProcessor">                        <!--	修改返回处理类	-->
+                <property name="messageConverter" ref="jsonMessageConverter"/>
+                <property name="beanWrappers">
+                    <list>
+                        <bean class="com.xiaogang.framework.basic.annotations.ListWrapper"/>
+                        <bean class="com.xiaogang.framework.basic.annotations.DefaultBeanWrapper"/>
+                    </list>
+                </property>
+                <property name="beanTranslateProcessor">
+                    <bean class="com.xiaogang.framework.basic.annotations.BeanTranslateProcessor"/>
+                </property>
+            </bean>
+        </mvc:return-value-handlers>
+        <mvc:argument-resolvers>
+            <bean class="com.xiaogang.framework.basic.annotations.JsonMapperArgumentResolver"/>
+        </mvc:argument-resolvers>
+    </mvc:annotation-driven>
+
+</beans>
