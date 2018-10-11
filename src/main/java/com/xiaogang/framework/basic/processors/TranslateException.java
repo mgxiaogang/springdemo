@@ -1,4 +1,4 @@
-package com.xiaogang.framework.basic.annotations;
+package com.xiaogang.framework.basic.processors;
 
 /**
  * @Author: zhuganggang

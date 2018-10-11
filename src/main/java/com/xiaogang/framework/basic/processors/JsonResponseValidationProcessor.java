@@ -1,5 +1,7 @@
-package com.xiaogang.framework.basic.annotations;
+package com.xiaogang.framework.basic.processors;
 
+import com.xiaogang.framework.basic.annotations.ResponseJson;
+import com.xiaogang.framework.basic.processors.interfaces.BeanWrapper;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
@@ -139,6 +141,7 @@ public class JsonResponseValidationProcessor implements HandlerMethodReturnValue
         return new ServletServerHttpResponse(response);
     }
 
+    @Override
     public void afterPropertiesSet() throws Exception {
         if (beanWrappers == null || beanWrappers.size() == 0) {
             throw new Exception("beanWrappers undefined");

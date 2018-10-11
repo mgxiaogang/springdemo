@@ -1,5 +1,6 @@
-package com.xiaogang.framework.basic.annotations;
+package com.xiaogang.framework.basic.processors;
 
+import com.xiaogang.framework.basic.annotations.Json;
 import org.codehaus.jackson.JsonNode;
 import org.codehaus.jackson.map.DeserializationConfig;
 import org.codehaus.jackson.map.ObjectMapper;

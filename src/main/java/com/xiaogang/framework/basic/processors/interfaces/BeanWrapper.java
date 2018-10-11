@@ -1,4 +1,4 @@
-package com.xiaogang.framework.basic.annotations;
+package com.xiaogang.framework.basic.processors.interfaces;
 
 import org.springframework.core.MethodParameter;
 

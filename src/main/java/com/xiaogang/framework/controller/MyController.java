@@ -20,8 +20,8 @@ public class MyController {
     @RequestMapping("/query")
     public QueryResponseVo query(@Json QueryRequestVo queryRequestVo) {
         QueryResponseVo queryResponseVo = new QueryResponseVo();
-        queryResponseVo.setAge(29);
-        queryResponseVo.setName("朱罡罡");
+        queryResponseVo.setAge(queryRequestVo.getAge());
+        queryResponseVo.setName(queryRequestVo.getName());
         return queryResponseVo;
     }
 }

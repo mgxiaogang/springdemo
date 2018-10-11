@@ -1,4 +1,4 @@
-package com.xiaogang.framework.basic.annotations;
+package com.xiaogang.framework.basic.processors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

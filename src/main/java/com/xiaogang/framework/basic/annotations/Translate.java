@@ -1,5 +1,7 @@
 package com.xiaogang.framework.basic.annotations;
 
+import com.xiaogang.framework.basic.processors.interfaces.FieldTranslater;
+
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

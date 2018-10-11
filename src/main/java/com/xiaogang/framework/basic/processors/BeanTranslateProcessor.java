@@ -1,5 +1,7 @@
-package com.xiaogang.framework.basic.annotations;
+package com.xiaogang.framework.basic.processors;
 
+import com.xiaogang.framework.basic.annotations.Translate;
+import com.xiaogang.framework.basic.processors.interfaces.FieldTranslater;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

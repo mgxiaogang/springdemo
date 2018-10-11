@@ -1,4 +1,6 @@
-package com.xiaogang.framework.basic.annotations;
+package com.xiaogang.framework.basic.processors.interfaces;
+
+import com.xiaogang.framework.basic.processors.TranslateException;
 
 /**
  * @Author: zhuganggang

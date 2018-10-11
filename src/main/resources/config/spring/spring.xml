@@ -31,7 +31,7 @@
     <!--<bean id="xstreamMarshaller" class="org.springframework.oxm.xstream.XStreamMarshaller" />-->
 
 
-    <bean id="jsonMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"></bean>
+    <bean id="jsonMessageConverter" class="com.xiaogang.framework.basic.processors.Base64JsonHttpMessageConverter"></bean>
     <mvc:annotation-driven>
         <mvc:message-converters>
             <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"></bean>
@@ -43,21 +43,21 @@
             <!--<ref bean="marshallingHttpMessageConverter" />-->
         </mvc:message-converters>
         <mvc:return-value-handlers>
-            <bean class="com.xiaogang.framework.basic.annotations.JsonResponseValidationProcessor">                        <!--	修改返回处理类	-->
+            <bean class="com.xiaogang.framework.basic.processors.JsonResponseValidationProcessor">                        <!--	修改返回处理类	-->
                 <property name="messageConverter" ref="jsonMessageConverter"/>
                 <property name="beanWrappers">
                     <list>
-                        <bean class="com.xiaogang.framework.basic.annotations.ListWrapper"/>
-                        <bean class="com.xiaogang.framework.basic.annotations.DefaultBeanWrapper"/>
+                        <bean class="com.xiaogang.framework.basic.processors.ListWrapper"/>
+                        <bean class="com.xiaogang.framework.basic.processors.DefaultBeanWrapper"/>
                     </list>
                 </property>
                 <property name="beanTranslateProcessor">
-                    <bean class="com.xiaogang.framework.basic.annotations.BeanTranslateProcessor"/>
+                    <bean class="com.xiaogang.framework.basic.processors.BeanTranslateProcessor"/>
                 </property>
             </bean>
         </mvc:return-value-handlers>
         <mvc:argument-resolvers>
-            <bean class="com.xiaogang.framework.basic.annotations.JsonMapperArgumentResolver"/>
+            <bean class="com.xiaogang.framework.basic.processors.JsonMapperArgumentResolver"/>
         </mvc:argument-resolvers>
     </mvc:annotation-driven>
 
